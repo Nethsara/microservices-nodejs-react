@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-export default ({ postID }) => {
+const CommentCreate = ({ postId }) => {
   const [content, setContent] = useState("");
 
-  const onSubmit = async (e) => {
-    e.preventDefault();
+  const onSubmit = async (event) => {
+    event.preventDefault();
 
-    await axios.post(`http://localhost:4001/posts/${postID}/comments`, {
+    await axios.post(`http://localhost:4001/posts/${postId}/comments`, {
       content,
     });
 
@@ -22,7 +22,6 @@ export default ({ postID }) => {
           <input
             value={content}
             onChange={(e) => setContent(e.target.value)}
-            type="text"
             className="form-control"
           />
         </div>
@@ -31,3 +30,5 @@ export default ({ postID }) => {
     </div>
   );
 };
+
+export default CommentCreate;
